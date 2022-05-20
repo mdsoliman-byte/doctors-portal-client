@@ -1,18 +1,20 @@
 
-import './App.css';
-import NavBar from './Pages/Shared/NavBar/NavBar';
 import { Route, Routes } from 'react-router-dom';
-import Home from './Pages/Home/Home';
+import './App.css';
 import About from './Pages/About/About';
+import Appointment from './Pages/Appointment/Appointment';
+import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
+import NavBar from './Pages/Shared/NavBar/NavBar';
 
 function App() {
   return (
-    <div className="">
+    <div className="max-w-7xl mx-auto  px-12">
       <NavBar></NavBar>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/about' element={<About></About>}></Route>
+        <Route path='/appointment' element={<Appointment></Appointment>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
       </Routes>
 
