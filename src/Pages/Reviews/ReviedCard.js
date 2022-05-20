@@ -8,8 +8,8 @@ const ReviedCard = ({ reviewse }) => {
             <div className='card shadow-xl p-10'>
                 <p>{review}</p>
                 <div className='flex justify-start items-center mt-5'>
-                    <div class="avatar">
-                        <div class=" rounded-full w-75 h-75  ring ring-primary ring-offset-base-100 ">
+                    <div className="avatar">
+                        <div className=" rounded-full w-75 h-75  ring ring-primary ring-offset-base-100 ">
                             <img src={img} className="" />
                         </div>
                     </div>
