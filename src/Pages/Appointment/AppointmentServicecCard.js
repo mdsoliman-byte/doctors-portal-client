@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AppointmentServicecCard = ({ service }) => {
+const AppointmentServicecCard = ({ service, setTritment }) => {
     const { name, slots } = service;
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
@@ -11,7 +11,8 @@ const AppointmentServicecCard = ({ service }) => {
                     slots.length > 0 ? <span>{slots[0]}</span> : <span className='text-red-500'>Please Try Another Day </span>
                 }</p>
                 <div className="card-actions justify-center">
-                    <button className="btn btn-primary" disabled={slots.length === 0}>Book Appointment</button>
+
+                    <label for="appointment-modal" class="btn btn-primary modal-button" disabled={slots.length === 0} onClick={() => setTritment(service)}>Book Appointment</label>
                 </div>
             </div>
         </div>
