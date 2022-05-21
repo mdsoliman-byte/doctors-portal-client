@@ -44,11 +44,11 @@ const Login = () => {
                             <input type="password" placeholder=" Enter Your Password" class="input input-bordered w-full max-w-xs" {...register("password", {
                                 required: {
                                     value: true,
-                                    message: "password Is Required"
+                                    message: "Password Is Required"
                                 },
                                 minLength: {
                                     value: 6,
-                                    message: "Provide A valid Email"
+                                    message: "Password musr be 6 carector"
                                 }
                             })} />
                             <label class="label">
