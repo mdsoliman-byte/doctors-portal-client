@@ -5,8 +5,8 @@ import bgChair from "../../assets/images/bg.png"
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import { format } from 'date-fns';
-const AppointmentBanner = () => {
-    const [date, setDate] = useState(new Date())
+const AppointmentBanner = ({date, setDate}) => {
+    
     return (
         <div class="hero min-h-screen " style={{ background: `url(${bgChair})`, backgroundSize: "cover" }}>
             <div class="hero-content flex-col lg:flex-row-reverse">
@@ -18,7 +18,7 @@ const AppointmentBanner = () => {
                      onSelect={setDate}
                      
                     />
-                    <p>My Selected Data {format(date, 'PP')}</p>
+                    
                 </div>
             </div>
         </div>
