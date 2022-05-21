@@ -7,7 +7,7 @@ const AbailabailAppointment = ({ date }) => {
     const [service, setService] = useState([])
     const [triment, setTritment] = useState(null)
     useEffect(() => {
-        fetch('appoientmentService.json')
+        fetch('http://localhost:4000/services')
             .then(res => res.json())
             .then(data => setService(data))
     }, [])
