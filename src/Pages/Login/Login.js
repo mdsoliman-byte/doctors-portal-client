@@ -1,6 +1,8 @@
+
 import React from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
+import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
 
@@ -13,8 +15,8 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    if (user) {
-        console.log(user)
+    if (user || euser) {
+        console.log(user || euser)
     }
 
     if (loading || eloading) {
@@ -75,8 +77,9 @@ const Login = () => {
                                 {errors.password?.type === "minLength" && <span class="label-text-alt text-red-500">{errors.password.message}</span>}
                             </label>
                         </div>
-                       <p className='text-red-500 mb-5'> {getErrors}</p>
+                        <p className='text-red-500 mb-5 '> {getErrors}</p>
                         <input className=' btn w-full max-w-xs' type="submit" />
+                        <p>New In Doctor <Link to="/registration">Create A New Account </Link></p>
 
                     </form>
                     <div class="divider">OR</div>
