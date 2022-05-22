@@ -16,8 +16,13 @@ const Login = () => {
     if (user) {
         console.log(user)
     }
+
     if (loading || eloading) {
         return <Loading></Loading>
+    }
+    let getErrors;
+    if (error || eerror) {
+        getErrors = error?.message || eerror?.message;
     }
     const onSubmit = (data) => {
         const { email, password } = data;
@@ -70,7 +75,9 @@ const Login = () => {
                                 {errors.password?.type === "minLength" && <span class="label-text-alt text-red-500">{errors.password.message}</span>}
                             </label>
                         </div>
+                       <p className='text-red-500 mb-5'> {getErrors}</p>
                         <input className=' btn w-full max-w-xs' type="submit" />
+
                     </form>
                     <div class="divider">OR</div>
                     <button onClick={() => signInWithGoogle()} class="btn btn-outline">SignIn With Google </button>
