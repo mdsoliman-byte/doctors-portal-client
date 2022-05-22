@@ -1,15 +1,29 @@
 import React from 'react';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import auth from '../../firebase.init';
+import Loading from '../Loading/Loading';
 
 const Login = () => {
+    const [
+        signInWithEmailAndPassword,
+        euser,
+        eloading,
+        eerror,
+    ] = useSignInWithEmailAndPassword(auth);
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     if (user) {
         console.log(user)
     }
-    const onSubmit = data => console.log(data);
+    if (loading || eloading) {
+        return <Loading></Loading>
+    }
+    const onSubmit = (data) => {
+        const { email, password } = data;
+
+        signInWithEmailAndPassword(email, password)
+    };
     return (
         <div className='flex justify-center items-center h-screen' >
             <div className=" card w-96 bg-base-100 shadow-xl">
