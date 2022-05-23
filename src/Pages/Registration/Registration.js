@@ -1,33 +1,38 @@
 import React from 'react';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
 const Registration = () => {
+    const nevigat = useNavigate()
     const [
         createUserWithEmailAndPassword,
         euser,
         eloading,
         eerror,
     ] = useCreateUserWithEmailAndPassword(auth);
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const { register, handleSubmit, formState: { errors } } = useForm();
     if (user || euser) {
         console.log(user || euser)
     }
 
-    if (loading || eloading) {
+    if (loading || eloading || updating) {
         return <Loading></Loading>
     }
     let getErrors;
-    if (error || eerror) {
+    if (error || eerror || updateError) {
         getErrors = error?.message || eerror?.message;
     }
-    const onSubmit = (data) => {
-        const { email, password } = data;
+    const onSubmit = async (data) => {
+        const { email, password, name } = data;
 
-        createUserWithEmailAndPassword(email, password)
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name });
+        nevigat("/appointment")
+
     };
     return (
         <div className='flex justify-center items-center h-screen' >
