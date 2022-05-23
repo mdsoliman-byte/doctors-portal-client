@@ -1,6 +1,6 @@
 import React from 'react';
-
-const AppointmentModal = ({ triment }) => {
+import { format } from 'date-fns';
+const AppointmentModal = ({ triment, date }) => {
     const { name, slots } = triment
     return (
         <div>
@@ -11,7 +11,8 @@ const AppointmentModal = ({ triment }) => {
                     <h3 className="text-lg font-bold text-center text-primary">{name}!</h3>
                     <form >
                         <input className='bg-neutral w-full p-2 mt-5 rounded text-white text-xl' disabled value={name} type="text" name="Full Name " id="" />
-                        <select className="select select-bordered w-full bg-neutral w-full p-2 mt-5 rounded text-white text-xl">
+                        <input className='bg-neutral w-full p-2 mt-5 rounded text-white text-xl' disabled value={format(date, 'PP')} type="text" name="Full Name " id="" />
+                        <select className="select select-bordered bg-neutral w-full p-2 mt-5 rounded text-white text-xl">
                             {
                                 slots.map(slot => <option>{slot}</option>)
                             }

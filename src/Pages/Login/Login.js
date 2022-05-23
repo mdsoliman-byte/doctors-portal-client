@@ -18,7 +18,7 @@ const Login = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const { register, handleSubmit, formState: { errors } } = useForm();
     if (user || euser) {
-        nevigat(form)
+        nevigat(form, { replace: true })
     }
 
     if (loading || eloading) {

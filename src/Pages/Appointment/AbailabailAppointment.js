@@ -22,7 +22,7 @@ const AbailabailAppointment = ({ date }) => {
                     service.map(servic => <AppointmentServicecCard key={servic._id} service={servic} setTritment={setTritment} ></AppointmentServicecCard>)
                 }
             </div>
-            {triment && <AppointmentModal triment ={triment}></AppointmentModal>}
+            {triment && <AppointmentModal triment ={triment} date={date}></AppointmentModal>}
         </div>
     );
 };
