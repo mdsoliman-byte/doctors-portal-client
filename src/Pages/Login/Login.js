@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
@@ -16,7 +15,7 @@ const Login = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const { register, handleSubmit, formState: { errors } } = useForm();
     if (user || euser) {
-        console.log(user || euser)
+        
     }
 
     if (loading || eloading) {

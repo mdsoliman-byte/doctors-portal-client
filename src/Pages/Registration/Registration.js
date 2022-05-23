@@ -16,7 +16,7 @@ const Registration = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const { register, handleSubmit, formState: { errors } } = useForm();
     if (user || euser) {
-        console.log(user || euser)
+
     }
 
     if (loading || eloading || updating) {
